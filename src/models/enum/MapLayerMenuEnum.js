@@ -1,0 +1,20 @@
+var MapLayerMenuEnum;
+(function (MapLayerMenuEnum) {
+    MapLayerMenuEnum["CAMERA"] = "\u6444\u50CF\u5934";
+    MapLayerMenuEnum["\u95E8\u7981"] = "\u95E8\u7981";
+    MapLayerMenuEnum["\u7535\u5B50\u56F4\u680F"] = "\u7535\u5B50\u56F4\u680F";
+    MapLayerMenuEnum["\u9632\u6500\u722C\u7F51"] = "\u9632\u6500\u722C\u7F51";
+    MapLayerMenuEnum["\u8B66\u52A1\u7AD9"] = "\u8B66\u52A1\u7AD9";
+    MapLayerMenuEnum["\u754C\u7891"] = "\u754C\u7891";
+    MapLayerMenuEnum["\u68C0\u67E5\u7AD9"] = "\u68C0\u67E5\u7AD9";
+    MapLayerMenuEnum["\u9053\u8DEF"] = "\u9053\u8DEF";
+    MapLayerMenuEnum["\u96F7\u8FBE"] = "\u96F7\u8FBE";
+    MapLayerMenuEnum["\u5149\u7535\u7403"] = "\u5149\u7535\u7403";
+    MapLayerMenuEnum["\u89C6\u9891\u4F1A\u8BAE"] = "\u89C6\u9891\u4F1A\u8BAE";
+    MapLayerMenuEnum["\u6267\u52E4\u623F"] = "\u6267\u52E4\u623F";
+    MapLayerMenuEnum["\u94C1\u4E1D\u7F51"] = "\u94C1\u4E1D\u7F51";
+    MapLayerMenuEnum["\u5317\u6597\u7EC8\u7AEF\u673A"] = "\u5317\u6597\u7EC8\u7AEF\u673A";
+    MapLayerMenuEnum["\u5317\u6597\u6307\u6325\u673A"] = "\u5317\u6597\u6307\u6325\u673A";
+    MapLayerMenuEnum["ALL"] = "ALL";
+})(MapLayerMenuEnum || (MapLayerMenuEnum = {}));
+export default MapLayerMenuEnum;

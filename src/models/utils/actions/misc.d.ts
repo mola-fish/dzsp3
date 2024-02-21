@@ -1,0 +1,10 @@
+export declare function defined(val: any): boolean;
+export declare function defaultValue<T>(val: T, def: T): T;
+export declare function cesiumColor(color: string): Cesium.Color;
+export declare function copyToClipboard(text: string): void;
+export declare function isInPolygon(pts: number[][], pt: number[]): boolean;
+export declare function sleep(timeout: number): Promise<void>;
+export declare function fetchJSON(input: RequestInfo, init?: RequestInit): Promise<any>;
+export declare function fetchJSON5(input: RequestInfo, init?: RequestInit): Promise<any>;
+export declare function findModelByEntity(czviewer: Cesium.Viewer, ent: Cesium.Entity): Cesium.Model;
+export declare function dumpPrimitive(pc: Cesium.PrimitiveCollection): any[];

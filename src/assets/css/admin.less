@@ -1,0 +1,417 @@
+@import "common";
+
+@backstage-theme-color: #4481eb;
+@backstage-background-color: #f7f7fb;
+@backstage-success-color: #67C33B;
+
+// 管理系统内容页的全局样式
+.admin-main {
+    &__container {
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &__header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: .18rem .12rem .14rem;
+        margin-bottom: .16rem;
+        background: #fff;
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            margin-right: .15rem;
+            margin-bottom: .14rem;
+            font-size: .14rem;
+            color: #333;
+
+            &__label {
+                color: #333;
+            }
+            /deep/ .el-input {
+                width: 2.4rem;
+
+                &__inner {
+                    height: .34rem;
+                    line-height: .34rem;
+                    border-radius: 3px;
+                }
+                &__icon {
+                    line-height: .34rem;
+                }
+                &__prefix {
+                    right: 4px;
+                    left: unset;
+                }
+                &.el-date-editor--datetime {
+                    width: 2.2rem;
+
+                    .el-input__inner {
+                        padding-left: .12rem;
+                    }
+                }
+            }
+            &.input-- {
+                &220 {
+                    /deep/ .el-input {
+                        width: 2.2rem;
+                    }
+                }
+                &210 {
+                    /deep/ .el-input {
+                        width: 2.1rem;
+                    }
+                }
+                &200 {
+                    /deep/ .el-input {
+                        width: 2rem;
+                    }
+                }
+                &190 {
+                    /deep/ .el-input {
+                        width: 1.9rem;
+                    }
+                }
+                &180 {
+                    /deep/ .el-input {
+                        width: 1.8rem;
+                    }
+                }
+                &160 {
+                    /deep/ .el-input {
+                        width: 1.6rem;
+                    }
+                }
+            }
+        }
+        .el-button {
+            margin-bottom: .14rem;
+
+            & + .el-button {
+                margin-left: 0;
+            }
+            &:not(:last-child) {
+                margin-right: .15rem;
+            }
+            > [class*=el-icon-] + span {
+                margin-left: .08rem;
+            }
+        }
+        .el-date-editor {
+            &--datetimerange {
+                width: 3.8rem;
+            }
+            /deep/ .el{
+                &-range-separator,
+                &-input__icon {
+                    line-height: .26rem;
+                }
+            }
+        }
+    }
+    &__body {
+        flex: 1;
+        padding: 0 .2rem;
+        background: #fff;
+    }
+    &__tab {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background: #fff;
+
+        .el-menu.el-menu--horizontal {
+            min-width: 100%;
+        }
+        .el-menu-item {
+            font-weight: bold;
+        }
+    }
+    &__tab-container {
+        flex: 1;
+        background-color: #fff;
+    }
+}
+.admin-table {
+    margin-bottom: .28rem;
+
+    /deep/ .el-table {
+        width: 100% !important;
+
+        table {
+            min-width: 100% !important;
+        }
+        td, th {
+            padding: .14rem 0;
+
+            img {
+                max-width: .5rem;
+            }
+        }
+        &__header {
+            th > .cell {
+                font-weight: bold;
+                color: #333;
+            }
+        }
+        &__body {
+            .el-table__row:nth-child(odd) {
+                background: #f7f8fa;
+            }
+            tr:hover > td {
+                background: fade(@backstage-theme-color, 10%);
+            }
+        }
+        &::before {
+            background: #fff;
+        }
+        &-column--selection {
+            &.is-leaf {
+                .cell {
+                    padding-left: 14px;
+
+                    &::before {
+                        content: "#";
+                    }
+                }
+                .el-checkbox {
+                    display: none;
+                }
+            }
+        }
+        .el-button {
+            height: .32rem;
+            padding: 0 .12rem;
+            line-height: .32rem;
+            font-size: .14rem;
+        }
+    }
+}
+
+// 重新定义element-ui样式
+.el-button {
+    height: .36rem;
+    padding: 0 .12rem;
+    line-height: .36rem;
+    font-size: .14rem;
+    border-radius: 4px;
+
+    &:not(.is-plain){
+        width: .8rem;
+    }
+    &--default {
+        &:not(.is-plain){
+            color: #333;
+            background: #f0f2f5;
+            border: 1px solid #d7d8e0;
+
+            &:focus,
+            &:hover {
+                background: #fff;
+                color: @backstage-theme-color;
+                border-color: @backstage-theme-color;
+            }
+        }
+        &.is-plain{
+            &:focus,
+            &:hover {
+                background: #fff;
+                border-color: @backstage-theme-color;
+                color: @backstage-theme-color;
+            }
+        }
+    }
+    &--primary {
+        &:not(.is-plain) {
+            background: @backstage-theme-color;
+            
+            &:hover {
+                background: fade(@backstage-theme-color, 90%);
+            }
+        }
+        &.is-plain {
+            background: fade(@backstage-theme-color, 10%);
+            border-color: @backstage-theme-color;
+            color: @backstage-theme-color;
+
+            &:hover {
+                color: #fff;
+                background: @backstage-theme-color;
+            }
+        }
+    }
+    &--success {
+        &:not(.is-plain) {
+            background: @backstage-success-color;
+            
+            &:hover {
+                background: fade(@backstage-success-color, 90%);
+            }
+        }
+        &.is-plain {
+            background: fade(@backstage-success-color, 10%);
+            border-color: @backstage-success-color;
+            color: @backstage-success-color;
+
+            &:hover {
+                color: #fff;
+                background: @backstage-success-color;
+            }
+        }
+    }
+}
+/deep/ .el-dialog {
+    left: 50%;
+    min-width: 6rem;
+    display: inline-block;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #276ad7;
+    transform: translateX(-50%);
+    overflow: hidden;
+
+    &__header {
+        padding: .22rem .24rem .14rem;
+        background: #fff;
+
+        &btn {
+            top: .18rem;
+            right: .18rem;
+            width: .2rem;
+            height: .2rem;
+
+            &:hover {
+                .el-icon {
+                    color: @backstage-theme-color;
+
+                }
+            }
+        }
+    }
+    &__close {
+        font-weight: bold;
+        color: #666;
+    }
+    &__title {
+        font-weight: 600;
+        font-size: .18rem;
+        color: #333;
+    }
+    &__body {
+        padding: 0 .24rem;
+        color: #333;
+    }
+    &__footer {
+        padding: .14rem .24rem .12rem;
+    }
+
+    // 弹出窗里的表单样式
+    .el-form {
+        padding-top: .16rem;
+
+        &-item {
+            margin-bottom: .2rem;
+
+            &__label {
+                padding: 0 .08rem 0 0;
+                font-size: .14rem;
+                color: #333;
+            }
+            &__error {
+                transform: scale(.833);
+                transform-origin: left top;
+            }
+            &.is-required:not(.is-no-asterisk) {
+                .el-form-item__label {
+                    position: relative;
+
+                    &:before {
+                        position: absolute;
+                        top: 3px;
+                        margin-right: 0;
+                        margin-left: -10px;
+                        color: #ff0000;
+                    }
+                }
+            }
+        }
+        .el-input {
+            width: 6.5rem;
+            
+            &__prefix {
+                right: 4px;
+                left: unset;
+            }
+            &.el-date-editor--datetime {
+                .el-input__inner {
+                    padding-left: .12rem;
+                }
+            }
+        }
+        .el-checkbox-group {
+            width: 6.5rem;
+        }
+        .el-tree {
+            width: 6.5rem;
+            max-height: 3.6rem;
+            overflow-y: auto;
+        }
+        .flex-row__between {
+            width: 7.34rem;
+            display: flex;
+            justify-content: space-between;
+
+            .el-input {
+                width: 2.8rem;
+            }
+            .el-date-editor {
+                width: 2.8rem;
+            }
+        }
+        .flex-row__additional {
+            width: 7.34rem;
+            display: flex;
+            justify-content: space-between;
+
+            .el-form-item {
+                flex: 1;
+            }
+            .el-input {
+                width: 100%;
+            }
+            .el-tag {
+                height: 100%;
+                line-height: .38rem;
+                border-left: 0;
+                border-radius: 0;
+            }
+            .select__origin {
+                width: 1.4rem;
+                margin-left: .1rem;
+            }
+        }
+        .upload-img__box {
+            width: 6.5rem;
+        }
+    }
+
+    // 视频
+    .dialog-video {
+        width: 7.5rem;
+        min-height: 3.4rem;
+        margin-bottom: .2rem;
+        background: #333;
+    
+        &__video {
+            width: 100%;
+        }
+    }
+    &.preview-img-dialog {
+        .el-dialog__body {
+            padding: .2rem .24rem;
+        }
+    }
+}

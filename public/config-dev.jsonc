@@ -1,0 +1,602 @@
+{
+    "_": ["192.168.9.66", "9081", ""],
+    "dts": "http://lanfeng.fun/#/typeofjsonc",
+    "desc": ["#/?load=config.jsonc", "#/"],
+    "version": "1.0.0",
+    // 绑定到实例的参数，这边限定了以$url开头，
+    // 参数会绑定到Vue.prototype上，所有的Vue实例都能访问到这些属性，在vue实例里面可以通过this[key]访问到相应的值
+    // 建议把第三方的接口绑定到此位置，尽量还是采用代理的方式去开发，那样更方便
+    "params": {
+      "$url_test": "http://localhost:8080/",
+      "$url_short_path_service": "http://101.200.84.173:9080/zs/qgis/shortest",
+      "$url_search_service": "/document/query/file/custom",
+      "$url_short_path_name": "/test/xian",
+      "$url_other_system": [
+        {
+          "key": 7,
+          "label": "人车卡口",
+          "icon": "&#xe62d;",
+          "type": "link",
+          "desc": "宇视人车卡口平台",
+          "url": "http://66.33.80.126:8078/#/?userName=loadmin&pwd=d4957289d3fd33b680fe433f1b912e65"
+        }
+      ],
+      "$url_single_server": "ws://localhost:81/"
+    },
+    // 各种开关
+    "switches": {
+      // 绘制工具的测试开关（会打开测试相关的功能）
+      "drawToolDebugMode": true,
+      // 跳过未知告警
+      "skipUnknownWarning": true
+    },
+    "viewer": {
+      "$params_center": [112.7474254,31.3673288, 400],
+      // ['normal', 'fast'， 'auto', number(0-2)],
+      // 默认auto，根据环境自动设置，
+      // fast 会降低清晰度，相应的渲染速度会很快，建议开发的时候使用
+      // normal 使用一个常规值，渲染效果中规中矩
+      // 可以设置一个数值用来描述清晰度，建议0-2之间，值越大，越清晰，normal大概等于1，fast大概等于0.5
+      "$params_mode": "auto",
+      "$params_debug_mode": false
+      //"$params_dem_url": "http://192.168.8.97:9080/zs/data/DEMO/DEM"
+    },
+    "system": {
+      "name": "国土碳汇数字孪生平台",
+      "logo": "./logo.png",
+      "scope": "三师",
+      "describe": [
+        "托云牧场始建于1951年1月，地处喀拉昆仑山北端，天山南麓，与吉尔吉斯斯坦接壤，位于克孜勒苏柯尔克孜自治州乌恰县境内，与乌恰县巴音库鲁提乡、托云乡、铁列克乡接壤，其前身是中国人民解放军二军后勤部的托云、木吉、英尔、阿英四个羊场和民族军十三师牧场合并而成的边境牧场，有边境线长72公里，海拔高度3700－4891米，年平均气温为1度；是祖国最西部的兵团团场，也是兵团唯一的柯尔克孜族农牧团场，是南疆兵团唯一的边境一线牧场。",
+        "托云牧场共有1个社区、3个连队，现有户籍人口355户1080人，其中以柯尔克孜族为主的少数民族有972人，占比90%，常住人口391户1009人。"
+      ]
+    },
+    "def": {
+    },
+    "map": [
+      {
+        "type": "folder",
+        "name": "基础地理",
+        "children": [
+          {
+            "name": "地形",
+            "type": "terrain",
+            "visible": true,
+            "url": "http://192.168.8.97:9080/zs/data/DEMO/DEM"
+            // "url": "http://localhost:9080/zs/data/jinshan/dem"
+          },
+          {
+            "name": "影像",
+            "type": "map",
+            "visible": true,
+            "url": "http://192.168.8.97:9080/zs/data/bound/shanghaijinshan_youbiaozhu",
+            // "url": "http://localhost:9080/zs/data/jinshan/map",
+            "style": {
+                "map-type": "zmap",
+                "scheme":"GEOGRAPHIC"
+            }
+          },
+          // {
+          //   "name": "湖北省边界",
+          //   "type": "map",
+          //   "visible": true,
+          //   "url": "http://192.168.8.57:9999/zs/data/Images/GTHBSBJ",
+          //   "style": {
+          //     "map-type": "zmap",
+          //     "scheme": "GEOGRAPHIC"
+          //   }
+          // },
+        ]
+      }
+    ],
+    "models": [
+      {
+        "type": "folder",
+        "name": "倾斜",
+        "children": [
+          // {
+          //   "name": "3dtiles模型",
+          //   "visible": true,
+          //   "type": "3dtiles",
+          //   "url": "http://192.168.8.154:9001/file/vr/model/22/tileset.json",
+          //   "position": [112.7474254,31.3673288,400],
+          //   "headingPitchRoll": [0,0,0],
+          //   "scale": [1,1,1]
+          // },
+          {
+            "name": "倾斜",
+            "visible": true,
+            "type": "3dtiles",
+            "url": "http://localhost/data/NanChang2/3dtiles.json",
+            "position": [112.7474254,31.34,520],
+            "pose": [19,0,0]
+          },
+          {
+            "name": "倾斜_CF",
+            "visible": true,
+            "type":"3dtiles",
+            "url": "http://localhost/data/整体0921/tileset.json",
+            "position": [112.74,31.3673288,461.68],
+            "pose": [34,0,0],
+            "scale": [25,25,25]
+          },
+          {
+            "name": "通量观测站",
+            "visible": true,
+            "type":"3dtiles",
+            "url": "http://localhost/data/gcz/tileset.json",
+            "position": [112.74,31.10,490],
+            "pose": [0,0,0],
+            "scale": [1,1,1]
+          }
+        ]
+      }
+    ],
+    "menus": [
+      {
+        "type": "folder",
+        "name": "菜单信息",
+        "children": [
+        ]
+      }
+    ],
+    "layers": [
+      {
+        "type": "folder",
+        "name": "业务信息",
+        "children": [
+          {
+            "name": "监测站",
+            "visible": true,
+            "type": "point",
+            // "url": "./base/queryBall?pageSize=-1&pageNum=-1",
+            "enableCluster": false,
+            "enableAnimation": false,
+            "ui": {
+              "menu": true,
+              "bind": [
+                "摄像头"
+              ]
+            },
+            "legend": {
+              "legendType": "image",
+              "value": [
+                {
+                  "name": "监测站",
+                  "url": "image/plotting/站点@1x.png"
+                }
+              ]
+            },
+            "data": {
+              "data": [
+                {
+                  "id": 22,
+                  "name": "G1157",
+                  "latitude": "31.367420",
+                  "longitude": "112.741",
+                  "height": "465",
+                  "type": "摄像头"
+                },
+                {
+                  "name": "G1158",
+                  "latitude": "31.367430",
+                  "longitude": "112.7413",
+                  "height": "465",
+                  "type": "摄像头"
+                },
+                {
+                  "name": "59278",
+                  "latitude": "31.367440",
+                  "longitude": "112.7417",
+                  "height": "465",
+                  "type": "摄像头"
+                },
+                {
+                  "name": "59288",
+                  "latitude": "31.367450",
+                  "longitude": "112.7411",
+                  "height": "465",
+                  "type": "摄像头"
+                }
+              ],
+              "meta": {
+                "epsg": "4326",
+                "x": "longitude",
+                "y": "latitude",
+                "z": "height"
+              }
+            },
+            "style": {
+              "label": {
+                "text": "{name}",
+                "font": "20px 微软雅黑",
+                "offset": [
+                  0,
+                  48
+                ],
+                "color": "#000",
+                "backgroundColor": "#fff",
+                "background": true,
+                "visible": true,
+                "scaleDistance": [
+                  100,
+                  2,
+                  1000,
+                  1
+                ],
+                "visibleRange": [
+                  0,
+                  10000
+                ],
+                "depth-distance": 2000
+              },
+              "icon": {
+                "src": "./image/plotting/站点@1x.png",
+                "width": 40,
+                "height": 55,
+                "depth-distance": 2000
+              },
+              "tip": "{name}"
+            }
+          },
+          {
+            "name": "净初级生产力专题图",
+            "type": "map",
+            "visible": false,
+            "url": "http://localhost:9080/zs/data/DEMO/t01",
+            "style": {
+              // "map-type": "ZMapImage",
+              "map-type": "zmap",
+              "subdomains": "01234567",
+              "scheme": "GEOGRAPHIC"
+            },
+            "rate": {
+              "unit": "year"
+            },
+            "legend": {
+              "colors": {
+                "id": "c009",
+                "name": "最高温度",
+                "unit": "℃",
+                "list": [
+                  {
+                    "name": "-",
+                    "minV": 0,
+                    "maxV": 200,
+                    "color": "#B0332C",
+                    "sort": 1,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "-",
+                    "minV": 200,
+                    "maxV": 400,
+                    "color": "#E36D52",
+                    "sort": 1,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "-",
+                    "minV": 400,
+                    "maxV": 600,
+                    "color": "#EDBA6E",
+                    "sort": 1,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "-",
+                    "minV": 600,
+                    "maxV": 800,
+                    "color": "#F2D890",
+                    "sort": 1,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "-",
+                    "minV": 800,
+                    "maxV": 1000,
+                    "color": "#F9FDC0",
+                    "sort": 1,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "-",
+                    "minV": 1000,
+                    "maxV": 1200,
+                    "color": "#CCE78E",
+                    "sort": 1,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "-",
+                    "minV": 1200,
+                    "maxV": 1400,
+                    "color": "#8FC56F",
+                    "sort": 1,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "-",
+                    "minV": 1400,
+                    "maxV": 1600,
+                    "color": "#4E9D5D",
+                    "sort": 1,
+                    "opacity": 1
+                  }
+                ]
+              },
+              "legendType": "colorBar",
+              "spacing": 2,
+              "colorline": {
+                "type": 1,
+                "values": [
+                  "极小",
+                  "极大"
+                ]
+              }
+            },
+            "useAnimate": {
+              "use": true,
+              "running": false,
+              "loopSize": 10,
+              "interval": 1000,
+              "layerList": [
+                {
+                  "name": "切片01",
+                  "type": "map",
+                  "alias": "2010",
+                  "format": "2010数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP01",
+                  "style": {
+                      // "map-type": "ZMapImage",
+                      "map-type": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片02",
+                  "type": "map",
+                  "alias": "2011",
+                  "format": "2011数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP02",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片03",
+                  "type": "map",
+                  "alias": "2012",
+                  "format": "2012数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP03",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片04",
+                  "type": "map",
+                  "alias": "2013",
+                  "format": "2013数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP04",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片05",
+                  "type": "map",
+                  "alias": "2014",
+                  "format": "2014数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP05",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片06",
+                  "type": "map",
+                  "alias": "2015",
+                  "format": "2015数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP06",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片07",
+                  "type": "map",
+                  "alias": "2016",
+                  "format": "2016数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP07",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片08",
+                  "type": "map",
+                  "alias": "2017",
+                  "format": "2017数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP08",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片09",
+                  "type": "map",
+                  "alias": "2018",
+                  "format": "2018数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP09",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片10",
+                  "type": "map",
+                  "alias": "2019",
+                  "format": "2019数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP10",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片11",
+                  "type": "map",
+                  "alias": "2020",
+                  "format": "2020数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP11",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              },
+              {
+                  "name": "切片12",
+                  "type": "map",
+                  "alias": "2021",
+                  "format": "2021数据",
+                  "visible": true,
+                  "url": "http://localhost:9999/zs/data/Images/THQP12",
+                  "style": {
+                      "map-type": "ZMapImage",
+                      "map-type1": "zmap",
+                      "subdomains": "01234567",
+                      "scheme": "GEOGRAPHIC"
+                  }
+              }
+              ]
+            },
+            "iconList": [
+              {
+                "icon": "icon-jiaoyi_biyan",
+                "title": "显示/隐藏",
+                "clickIcon": "icon-zhengyanjing",
+                "canActive": true,
+                "active": true,
+                "key": 0,
+                "show": true
+              },
+              {
+                "icon": "icon-upon",
+                "title": "上移",
+                "clickIcon": "",
+                "key": 1,
+                "show": true,
+                "active": false
+              },
+              {
+                "icon": "icon-shangyi",
+                "title": "下移",
+                "clickIcon": "",
+                "key": 2,
+                "show": true,
+                "active": false
+              },
+              {
+                "icon": "icon-suo",
+                "title": "锁住/解锁",
+                "clickIcon": "icon-suo1",
+                "canActive": true,
+                "key": 3,
+                "show": true,
+                "active": false
+              },
+              {
+                "icon": "&#xe604;",
+                "title": "时间对齐",
+                "clickIcon": "",
+                "key": 4,
+                "show": false,
+                "active": false
+              },
+              {
+                "icon": "&#xe690;",
+                "title": "设置透明度",
+                "clickIcon": "",
+                "key": 7,
+                "show": false,
+                "active": false
+              },
+              {
+                "icon": "&#xe6c6;",
+                "title": "修改参数",
+                "clickIcon": "",
+                "key": 8,
+                "show": false,
+                "active": false
+              },
+              {
+                "icon": "icon-bofang1",
+                "title": "播放/暂停动画",
+                "clickIcon": "icon-bofang",
+                "key": 11,
+                "canActive": true,
+                "show": true,
+                "active": false
+              },
+              {
+                "icon": "icon-chuyidong",
+                "title": "删除图层",
+                "clickIcon": "",
+                "key": 9,
+                "show": true,
+                "active": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "type": "folder",
+        "name": "标注信息",
+        "children": [
+        ]
+      }
+    ]
+  }

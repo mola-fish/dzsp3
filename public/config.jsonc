@@ -1,0 +1,462 @@
+{
+  "_": [
+    "192.168.9.66",
+    "9081",
+    ""
+  ],
+  "dts": "http://lanfeng.fun/#/typeofjsonc",
+  "desc": [
+    "#/?load=config.jsonc",
+    "#/"
+  ],
+  "version": "1.0.0",
+  // 绑定到实例的参数
+  //都会被绑定到app.config.globalProperties
+  "params": {
+    "$params_mode": "auto",
+    "$params_debug_mode": false,
+    // 开发版本,true(gs),false(sj)
+    "$url_debug": true,
+    // 图标地址
+    "$url_svg": "http://192.168.8.215/data/images/sitePointV3_70_190",
+    // 地形夸张程度
+    "$url_degree": 5,
+    // 地形抬高
+    "$url_height": 5000,
+    // 初始化镜头
+    "$params_center": [114.36340890953481, 30.728570069907228, 6974.96453419406],
+    "$params_heading":0.22200405224236874,
+    "$params_pitch":89.19766383618975,
+    "$params_roll":1.8223523296324517e-12,
+    // 公司
+    "$url_single_server": "ws://192.168.8.215:18887/",
+    // "$url_inputmode":"ASDW","Globe"
+    "$url_inputMode": "Globe"
+  },
+  "def": {},
+  "map": [
+    {
+      "type": "folder",
+      "name": "自定义影像",
+      "children": [
+        {
+          "name": "影像1",
+          "type": "map",
+          "visible": true,
+          "url": "http://192.168.8.215:19080/zs/data/ArcGIS/whs_yzj",
+          "style": {
+            "map-type": "zmap",
+            "scheme": "GEOGRAPHIC"
+          }
+        },
+        {
+          "name": "影像2",
+          "type": "map",
+          "visible": false,
+          "url": "http://101.200.84.173:55702/zs/data/ArcGIS/qx_shense",
+          "style": {
+            "map-type": "zmap",
+            "scheme": "GEOGRAPHIC"
+          }
+        },
+        {
+          "name": "影像3",
+          "type": "map",
+          "visible": false,
+          "url": "http://101.200.84.173:55702/zs/data/ArcGIS/night_qxj",
+          "style": {
+            "map-type": "zmap",
+            "scheme": "GEOGRAPHIC"
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "自定义地理",
+      "children": [
+        {
+          "name": "地形1",
+          "type": "terrain",
+          "visible": true,
+          "url": "http://192.168.8.215:19080/zs/data/DEMO/dx",
+        },
+        {
+          "name": "地形2",
+          "type": "terrain",
+          "visible": false,
+          "url": "http://192.168.8.215:19080/zs/data/DEMO/dem",
+        },
+        {
+          "name": "边界线1",
+          "hide": true,
+          "type": "vector",
+          "url": "./data/武汉市行政区划缓冲1000.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              100
+            ]
+          },
+          "visible": true,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "10",
+              "detail": {
+                "type": "normal",
+                "color": "#000"
+              },
+              "depthCheck": true
+            },
+            "wall": {
+              "color": "gray",
+              "height": 500000,
+              "thickness": 200000,
+              "image": "http://192.168.8.215/data/images/sitePointV3_70_190/jian_bian.png",
+            }
+          }
+        },
+        {
+          "name": "边界线2",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/whbj.geojson",
+          "formatter": {
+            "type": "geojson",
+            // "coordinateOffset": [
+            //   0,
+            //   0,
+            //   1100
+            // ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "blue"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "协同观测",
+      "children": [
+        {
+          "name": "省面",
+          "type": "map",
+          "visible": false,
+          "url": "http://192.168.8.215:19080/zs/data/QGIS/sheng",
+          "style": {
+            "map-type": "zmap",
+            "scheme": "GEOGRAPHIC"
+          }
+        },
+        {
+          "name": "卫星",
+          "visible": false,
+          "type": "dynActor",
+          // "url": "http://10.108.66.169/data/3dtiles/17/tileset.json",
+          "path": "/ZMapAssets/Models/Sundry/Satellite/Satellite01/BP_Satellite01",
+          "position": [
+            110.87309149054849,
+            30.31250086389121,
+            90000
+          ],
+          "scale": [
+            600,
+            600,
+            600
+          ],
+          "pose": [
+            150,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "X雷达往复",
+          "visible": false,
+          "type": "dynActor",
+          "path": "/ZMapAssets/Models/Sundry/Radar/Radar10/BP_radar10_2",
+          "position": [
+            113.907929,
+            30.310087,
+            5116.113026673778
+          ],
+          "pose": [
+            60,
+            0,
+            0
+          ],
+          "scale": [
+            100000,
+            100000,
+            100000
+          ],
+        },
+        {
+          "name": "X雷达往复2",
+          "visible": false,
+          "type": "dynActor",
+          "path": "/ZMapAssets/Models/Sundry/Radar/Radar10/BP_radar10_2",
+          "position": [
+            114.241542,
+            30.37307,
+            5443.872215892903
+          ],
+          "pose": [
+            120,
+            0,
+            0
+          ],
+          "scale": [
+            100000,
+            100000,
+            100000
+          ],
+        },
+        {
+          "name": "垂直观测",
+          "visible": false,
+          "type": "dynActor",
+          "path": "/ZMapAssets/Models/Sundry/Radar/Radar6/BP_Radar6",
+          "position": [
+            113.96076431095395,
+            30.34602418236754,
+            5118.4490708531075
+          ],
+          "pose": [
+            100,
+            0,
+            0
+          ],
+          // "scale": [100000, 100000, 100000],
+        },
+        // {
+        //   "name": "气象观测站",
+        //   "visible": false,
+        //   "type": "3dtiles",
+        //   "url": "http://10.108.66.169/data/3dtiles/13/tileset.json",
+        //   "scale": [1,1,1],
+        //   "position": [113.96114725641836,30.34612230258382,5118.301108774142],
+        //   "pose": [0,0,0]
+        // },
+        {
+          "name": "20km",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/20km预警线.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "red"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "60km",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/60km预警线.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "yellow"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "120km",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/120km预警线.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "green"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "地形地貌",
+      "children": [
+        // 黄色市面闪烁
+        {
+          "name": "市面",
+          "type": "decal",
+          "visible": false,
+          // "url": "http://192.168.8.215/data/geojson/市面.geojson",
+          "url": "./data/市面.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 5000,
+          "color": "rgba(250,254,136)",
+          "opacity": 0.2
+        },
+        {
+          "name": "市边界",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/市边界.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "yellow"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "省面",
+          "type": "map",
+          "visible": false,
+          // "url": "http://192.168.8.215:19080/zs/data/ArcGIS/tdt_dx",
+          "url": "http://192.168.8.215:19080/zs/data/QGIS/sheng",
+          "style": {
+            "map-type": "zmap",
+            "scheme": "GEOGRAPHIC"
+          }
+        },
+        {
+          "name": "水系1",
+          "type": "decal",
+          "visible": false,
+          "uri": "./data/武汉市水系2.geojson",
+          "decalType": "water",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 1000,
+          "color": "#00a3fd",
+          "opacity": 1
+        },
+        {
+          "name": "汉阳",
+          "type": "decal",
+          "visible": false,
+          "uri": "./data/汉阳.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 1500,
+          "color": "rgba(127,0,0)",
+          "opacity": 0.45
+        },
+        {
+          "name": "汉口",
+          "type": "decal",
+          "visible": false,
+          "uri": "./data/汉口.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 20000,
+          "color": "rgb(19,0,119)",
+          "opacity": 0.45
+        },
+        {
+          "name": "武昌",
+          "type": "decal",
+          "visible": false,
+          "uri": "./data/武昌.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 1500,
+          "color": "rgba(164,179,0)",
+          "opacity": 0.45
+        },
+        {
+          "name": "平原",
+          "type": "decal",
+          "visible": false,
+          "url": "./data/jhpy1.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 1500,
+          "color": "orange",
+          "opacity": 0.45
+        },
+      ]
+    },
+  ],
+  "menus": [
+    {
+      "type": "folder",
+      "name": "菜单信息",
+      "children": []
+    }
+  ],
+  "labels": [
+    {
+      "type": "folder",
+      "name": "标注信息",
+      "children": []
+    }
+  ]
+}

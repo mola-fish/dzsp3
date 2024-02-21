@@ -1,0 +1,71 @@
+.scanner {
+  --font-color: #FFFFFF;
+  --font-bgcolor: rgba(255, 255, 255, 0.3);
+  --font-size: 16px;
+  --animation-duration: 1.2s;
+  --animation-iteration: 1;
+  /* --img-background:linear-gradient(#000,#000);			 */
+  display: inline-block;
+  background-image: var(--img-background);
+  background-size: 100% 100%;
+}
+.scanner div {
+  position: relative;
+  display: block;
+  margin: 0px calc(0.5*var(--font-size));
+  height: calc(var(--font-size) * 1.5);
+  line-height: calc(var(--font-size) * 1.5);
+  font-size: var(--font-size);
+  font-weight: bold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: var(--font-bgcolor);
+  background-image: linear-gradient(var(--font-color), var(--font-color));
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  -webkit-animation: printing var(--animation-duration) linear var(--animation-iteration);
+  animation-fill-mode: forwards;
+}
+.scanner .num {
+  font-size: 0.2rem;
+  color: yellow !important;
+  -webkit-text-fill-color: yellow;
+}
+.scanner div:nth-child(1) {
+  animation-delay: 0;
+}
+.scanner div:nth-child(2) {
+  animation-delay: var(--animation-duration);
+}
+.scanner div:nth-child(3) {
+  animation-delay: calc(2*var(--animation-duration));
+}
+.scanner div:nth-child(4) {
+  animation-delay: calc(3*var(--animation-duration));
+}
+.scanner div:nth-child(5) {
+  animation-delay: calc(4*var(--animation-duration));
+}
+.scanner div:nth-child(6) {
+  animation-delay: calc(5*var(--animation-duration));
+}
+.scanner div:nth-child(7) {
+  animation-delay: calc(6*var(--animation-duration));
+}
+.scanner div:nth-child(8) {
+  animation-delay: calc(7*var(--animation-duration));
+}
+.scanner div:nth-child(9) {
+  animation-delay: calc(8*var(--animation-duration));
+}
+.scanner div:nth-child(10) {
+  animation-delay: calc(9*var(--animation-duration));
+}
+@-webkit-keyframes printing {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}

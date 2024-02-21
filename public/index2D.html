@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+      <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.options.path.zmap2d %>/ol.css" />
+      <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.options.path.zmap2d %>/ZMap2D.css" />
+      <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.options.path.zmap2d %>/ZmapFun.css" />
+      <script src="<%= htmlWebpackPlugin.options.path.lib %>/jquery-3.3.1.min.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/turf.min.js"></script>
+      <!-- zmap2d 库 -->
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/ol-debug.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/Graticule.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/ol-zmap-source.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/ZMap2D.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/ZMap2DLib.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/ZMap2DControl.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/MapWidget.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/VectorEffect.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/batchPntsQuery.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/raster-layer.min.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/ol-echarts.min.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/ol-editor.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.path.zmap2d %>/wind-layer-s.js"></script>
+
+      <!-- Comp 视图 -->
+      <script src="<%= htmlWebpackPlugin.options.path.lib %>/CompView.min.js"></script>
+      <script type="text/javascript" src="lib/Global.js"></script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

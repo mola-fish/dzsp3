@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>地图</title>
+	<link href="../lib/zmap2d/ol.css" rel="stylesheet">
+	<link href="../lib/zmap2d/ZMap2D.css" rel="stylesheet">
+	<script src="../lib/zmap2d/ol-debug.js"></script>
+	<script src="../lib/zmap2d/ol-zmap-source.js"></script>
+	<script src="../lib/zmap2d/ZMap2D.js"></script>
+	<script src="../lib/zmap2d/ZMap2DLib.js"></script>
+	<script src="../lib/zmap2d/ZMap2DControl.js"></script>
+	<script type="text/javascript" src="../lib/zmap2d/jquery.min.js"></script>
+	<script type="text/javascript" src="../lib/zmap2d/MapWidget.js"></script>
+	<script type="text/javascript" src="../lib/zmap2d/VectorEffect.js"></script>
+	<link rel="stylesheet" type="text/css" href="../lib/zmap2d/MapWidget.css">
+	<style>
+		#test {
+			position: absolute;
+			top: 0px;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="test"></div>
+
+</body>
+<script type="text/javascript">
+	var point1 = [
+		[114.3775, 30.5166666666667, 53]
+	]
+	var point2 = [
+		[114.390169, 31.084407, 25.5],
+		[114.329015, 30.794884, 25.5],
+		[114.838116, 30.837596, 25.5],
+		[114.050152, 30.597373, 25.5],
+		[114.557048, 30.560901, 25.5],
+		[114.241542, 30.37307, 25.5],
+		[113.907929, 30.310087, 25.5],
+	]
+	getMap()
+	window.addEventListener('message', (e) => {
+		var info = e.data
+		addlayer(info)
+	});
+
+	function getMap(info) {
+		//底层地图数据
+		var data = [
+			{
+				"defaultname": "地图",
+				"img": "img/yx.png",
+				"maptype": "zmap",
+				"show": true,
+				// "url": "http://10.108.66.169:9080/zs/data/ArcGIS/whs_yzj",
+				"url": "http://192.168.8.215:19080/zs/data/ArcGIS/whs_yzj",
+				repeat: false
+			}
+
+		];
+		var setting =
+		{
+			"iconImageCache": 100,   //上图不同图片个数的缓存大小
+			"ruleControl": false,    //比例尺是否显示
+			"ovmap": false,		//鹰眼是否显示
+			"layercontrol": false,//图层控制按钮
+			"toolstyle": "1",	//工具条风格
+			"x": "114.252889",//经度
+			"y": "30.6036",//纬度
+			"z": '7.8',//地图级别
+			"zoomTool": false,//显示缩放工具
+			"mousePosition": false,//显示鼠标位置（经纬度）
+			"resetTool": false,//显示复位工具按钮
+			"levelTool": false,//显示级别导航条
+			"allDrowTool": false,//是否显示绘制工具条,包括测量工具，几何图形绘制工具，绘制等值线等值面工具等按钮
+			"measureTool": true,//显示测量工具按钮
+			"geometryTool": true,//显示几何图形绘制工具按钮
+			"isolineTool": true,//显示绘制等值线等值面工具按钮
+
+		};
+		//设置数据
+		maplayer = new ZMap.MapWidget.init("test", { projection: "EPSG:4326" });
+		maplayer.initMap(setting, data);//生成对应的地图及相关工具按钮
+		maplayer.zmap2dview.EnableInput(false);
+	}
+
+	// 添加图层
+	function addlayer(info) {
+		// maplayer.addLayer(pointdata);
+		maplayer.zmap2dview.RemoveLabel('id123')
+		maplayer.zmap2dview.RemoveLabel('id1234')
+		if (info.mes == '单站') {
+			point1.forEach((item,index) => {
+				maplayer.zmap2dview.AddImageLabel(
+				'id1' + index,
+				item[0], item[1],
+				`<img src="../lib/zmap2d/image/radar1.webp" style="width:80px;height:80px" />`, 'center-center');
+			})
+			point2.forEach((item,index) => {
+				maplayer.zmap2dview.RemoveLabel('id2' + index)
+			})
+		}
+		else if (info.mes == '组网') {
+			point2.forEach((item,index) => {
+				maplayer.zmap2dview.AddImageLabel(
+				'id2' + index,
+				item[0], item[1],
+				`<img src="../lib/zmap2d/image/radar2.webp" style="width:150px;height:150px" />`, 'center-center');
+			})
+			point1.forEach((item,index) => {
+				maplayer.zmap2dview.RemoveLabel('id1' + index)
+			})
+		}
+	}
+
+</script>
+
+</html>

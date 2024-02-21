@@ -1,0 +1,140 @@
+html {
+    font-size: 625%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-size: 16px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+@font-face {
+    font-family: 'PangMenZhengDao'; // 字体名
+    src: url('~@/assets/fonts/PangMenZhengDao.ttf'); // 引入字体
+}
+@font-face {
+    font-family: '方正正中黑简体';
+    src: url('~@/assets/fonts/方正正中黑简体.ttf');
+}
+@font-face {
+    font-family: 'Digital-7Mono';
+    src: url('~@/assets/fonts/digital-7 (mono).ttf');
+}
+
+@theme-color: #187ac8;
+@tool-border-color: #666;
+@theme-shadow-color: #163558;
+@theme-text-color: #1de7ff;
+@header-height: .6rem;
+@header-logo-height: .76rem;
+
+// 空提示
+.empty-tips {
+    width: 100%;
+    padding: .3rem 0 .2rem;
+    text-align: center;
+    font-size: inherit;
+    color: inherit;
+}
+// 事件穿透
+.event-pass{
+    pointer-events: none;
+    &>*{
+        pointer-events: all;
+    }
+}
+// 滚动条样式
+&:not([class^='el'])::-webkit-scrollbar {
+    width: 8px;
+}
+&:not([class^='el'])::-webkit-scrollbar-track {
+    background-color: rgba(150, 150, 150, .6);
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+&:not([class^='el'])::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, .6);
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+
+@keyframes warning-scale {
+    0%  {
+        transform: scale(0.5);
+    }
+    50%  {
+        transform: scale(1);
+    }
+    100%  {
+        transform: scale(0.5);
+    }
+}
+
+.color-map-unit {
+    display: flex;
+    align-items: center;
+    font-size: .13rem;
+}
+.color-map-unit img {
+    margin-right: .5em;
+}
+
+
+/*台风tooltip*/
+.typhoonToolTip {
+    width: auto;
+    box-shadow: 0 0 5px #ccc;
+
+    .tyTitle {
+        background: var(--light-theme);
+        padding: 4px 10px;
+        color: #000000;
+        font-size: 14px;
+        color: white;
+    }
+    .tyBody {
+        background: #fff;
+        padding: 10px;
+    }
+    .tyBody > div {
+        border-bottom: 1px solid #ddd;
+        padding: 4px 0;
+    }
+    .tyBody .tyLabel {
+        padding-right: 10px;
+        color: #333333;
+    }
+    .tyBody td {
+        border: 1px solid #ddd;
+        white-space: nowrap;
+        padding: 2px 4px;
+    }
+    .tyBody td.default {
+        background: #F4F4F4;
+        min-width: 45px;
+    }
+    .color-red {
+        color: red;
+    }
+}
+
+
+.zmap-info {
+    position: fixed;
+    top: .90rem;
+    left: 50%;
+    z-index: 4;
+    color: white;
+    background: rgba(0,0,0,.5);
+    line-height: 2;
+    padding: 0em 1em;
+    font-size: 14px;
+}
+
+#webContainer-mapview>div{
+    display: none !important;
+}

@@ -1,0 +1,1555 @@
+{
+  "_": [
+    "192.168.9.66",
+    "9081",
+    ""
+  ],
+  "dts": "http://lanfeng.fun/#/typeofjsonc",
+  "desc": [
+    "#/?load=config.jsonc",
+    "#/"
+  ],
+  "version": "1.0.0",
+  // 绑定到实例的参数，这边限定了以$url开头，
+  // 参数会绑定到Vue.prototype上，所有的Vue实例都能访问到这些属性，在vue实例里面可以通过this[key]访问到相应的值
+  // 建议把第三方的接口绑定到此位置，尽量还是采用代理的方式去开发，那样更方便
+  "params": {
+    "$url_degree": 5,
+    "$url_height": 5000,
+    "$url_addheight": false,
+    "$url_text": {
+      "font": "20px 黑体",
+      "fillColor": "white",
+      "outlineColor": "white",
+      "outlineWidth": 0
+    },
+    "$url_select": "http://101.200.84.173:55702/zs/data/ArcGIS/WH_Country",
+    "$url_dx": "http://10.108.66.169:9080/zs/data/DEMO/dx",
+    "$url_svg": "http://10.108.66.169/data/images/sitePointV3_70_190",
+    "$url_svg2": "http://10.108.66.169/data/images/type2",
+    "$url_second": "http://10.108.66.169/data/images/second",
+    // "$url_svg":"http://192.168.8.215/data/images/sitePointV3_70_190",
+    // "$url_svg2":"http://192.168.8.215/data/images/type2",
+    "$url_bor": "http://10.108.66.169:9091/weather/message/broadcast",
+    "$url_borwx": "ws:10.108.66.169:9091/weather/webSocket/",
+    // "$url_bor":"http://192.168.8.215:9091/weather/message/broadcast",
+    // "$url_borwx":"ws:192.168.8.215:9091/weather/webSocket/",
+    // 开发版本,true(gs),false(sj)
+    "$url_debug": false,
+    "$url_watch": true,
+    "$url_dev": "http://192.168.8.215:19080",
+    "$url_pro": "http://10.108.66.169:9080",
+    "$url_short_path_service": "http://101.200.84.173:9080/zs/qgis/shortest",
+    "$url_search_service": "/document/query/file/custom",
+    "$url_short_path_name": "/test/xian",
+    "$url_other_system": [
+      {
+        "key": 7,
+        "label": "人车卡口",
+        "icon": "&#xe62d;",
+        "type": "link",
+        "desc": "宇视人车卡口平台",
+        "url": "http://66.33.80.126:8078/#/?userName=loadmin&pwd=d4957289d3fd33b680fe433f1b912e65"
+      }
+    ],
+    "$url_single_server": "ws://10.108.66.169:8848",
+    // 测试
+    // "$url_single_server": "ws://10.108.66.169:28848",
+    // "$url_single_server": "ws://192.168.0.101:81",
+    // 公司
+    // "$url_single_server": "ws://192.168.8.215:18887/",
+    // "$url_inputmode":"ASDW","Globe"
+    "$url_inputMode": "Globe"
+    // "$url_single_server": "ws://101.200.84.173:58003",
+    // 信阳
+  },
+  // 各种开关
+  "switches": {
+    // 绘制工具的测试开关（会打开测试相关的功能）
+    "drawToolDebugMode": true,
+    // 跳过未知告警
+    "skipUnknownWarning": true
+  },
+  "viewer": {
+    "$params_center": [
+      114.36340890953481,
+      30.728570069907228,
+      100
+    ],
+    // "$params_center": [114.180374,30.670386, 100],
+    // ['normal', 'fast'， 'auto', number(0-2)],
+    // 默认auto，根据环境自动设置，
+    // fast 会降低清晰度，相应的渲染速度会很快，建议开发的时候使用
+    // normal 使用一个常规值，渲染效果中规中矩
+    // 可以设置一个数值用来描述清晰度，建议0-2之间，值越大，越清晰，normal大概等于1，fast大概等于0.5
+    "$params_mode": "auto",
+    "$params_debug_mode": false
+    //"$params_dem_url": "http://192.168.8.97:9080/zs/data/DEMO/DEM"
+  },
+  "system": {
+    "name": "武汉气象综合立体监测网",
+    "logo": "./logo.ico",
+    "scope": "三师",
+    "describe": [
+      "托云牧场始建于1951年1月，地处喀拉昆仑山北端，天山南麓，与吉尔吉斯斯坦接壤，位于克孜勒苏柯尔克孜自治州乌恰县境内，与乌恰县巴音库鲁提乡、托云乡、铁列克乡接壤，其前身是中国人民解放军二军后勤部的托云、木吉、英尔、阿英四个羊场和民族军十三师牧场合并而成的边境牧场，有边境线长72公里，海拔高度3700－4891米，年平均气温为1度；是祖国最西部的兵团团场，也是兵团唯一的柯尔克孜族农牧团场，是南疆兵团唯一的边境一线牧场。",
+      "托云牧场共有1个社区、3个连队，现有户籍人口355户1080人，其中以柯尔克孜族为主的少数民族有972人，占比90%，常住人口391户1009人。"
+    ]
+  },
+  "def": {},
+  "map": [
+    {
+      "type": "folder",
+      "name": "自定义地理",
+      "children": [
+        {
+          "name": "影像1",
+          "type": "map",
+          "visible": true,
+          // "url":"http://10.108.66.118:9080/zs/data/chy/yx_wzj",
+          "url": "http://10.108.66.169:9080/zs/data/TDT/yx",
+          "style": {
+            "map-type": "zmap",
+            "scheme": "GEOGRAPHIC"
+          }
+        },
+        // {
+        //   "name": "影像2",
+        //   "type": "map",
+        //   "visible": false,
+        //   "url": "http://10.108.66.118:9080/zs/data/chy/yx_wzj",
+        //   "style": {
+        //     "map-type": "zmap",
+        //     "scheme": "GEOGRAPHIC"
+        //   }
+        // },
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "基础地理",
+      "children": [
+        {
+          "name": "地形1",
+          "type": "terrain",
+          "visible": true,
+          "url": "http://10.108.66.169:9080/zs/data/DEMO/dx",
+          // "url": "http://192.168.8.215:19080/zs/data/DEMO/dem",
+        },
+        {
+          "name": "地形2",
+          "type": "terrain",
+          "visible": false,
+          "url": "http://10.108.66.169:9080/zs/data/DEMO/tdt_dx",
+          // "url": "http://192.168.8.215:19080/zs/data/DEMO/dem",
+        },
+        {
+          "name": "八分山雷达",
+          "visible": true,
+          "type": "3dtiles",
+          "url": "http://10.108.66.169/data/3dtiles/16/tileset.json",
+          "position": [
+            114.28913392378544,
+            30.357851492447757,
+            6073.246958169898
+          ],
+          "pose": [
+            150,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "边界线2",
+          "hide": true,
+          "type": "vector",
+          "url": "./data/武汉市行政区划缓冲1000.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              100
+            ]
+          },
+          "visible": true,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "10",
+              "detail": {
+                "type": "normal",
+                "color": "#000"
+              },
+              "depthCheck": true
+            },
+            "wall": {
+              "color": "gray",
+              "height": 500000,
+              "thickness": 200000,
+              "image": "http://10.108.66.169/data/images/sitePointV3_70_190/jian_bian.png",
+            }
+          }
+        },
+        {
+          "name": "网格",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/wgx.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "2",
+              "detail": {
+                "type": "normal",
+                "color": "yellow"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "地形地貌",
+      "children": [
+        // 黄色市面闪烁
+        {
+          "name": "市面",
+          "type": "decal",
+          "visible": false,
+          "uri": "http://10.108.66.169/data/geojson/市面.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 5000,
+          "color": "rgba(250,254,136)",
+          "opacity": 0.2
+        },
+        {
+          "name": "市边界",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/市边界.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "yellow"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "省面",
+          "type": "map",
+          "visible": false,
+          "url": "http://10.108.66.169:9080/zs/data/QGIS/sheng",
+          // "url": "http://192.168.8.215:19080/zs/data/ArcGIS/tdt_dx",
+          "style": {
+            "map-type": "zmap",
+            "scheme": "GEOGRAPHIC"
+          }
+        },
+        {
+          "name": "水系1",
+          "type": "decal",
+          "visible": false,
+          "uri": "./data/武汉市水系2.geojson",
+          "decalType": "water",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 1000,
+          "color": "#00a3fd",
+          "opacity": 1
+        },
+        {
+          "name": "汉阳",
+          "type": "decal",
+          "visible": true,
+          "uri": "./data/汉阳.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 1500,
+          "color": "rgba(127,0,0)",
+          "opacity": 0.45
+        },
+        {
+          "name": "汉口",
+          "type": "decal",
+          "visible": true,
+          "uri": "./data/汉口.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 20000,
+          "color": "rgb(19,0,119)",
+          "opacity": 0.45
+        },
+        {
+          "name": "武昌",
+          "type": "decal",
+          "visible": true,
+          "uri": "./data/武昌.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 1500,
+          "color": "rgba(164,179,0)",
+          "opacity": 0.45
+        },
+        {
+          "name": "平原",
+          "type": "decal",
+          "visible": true,
+          "url": "./data/jhpy1.geojson",
+          "decalSize": 512,
+          "height": 5000,
+          "thickness": 1500,
+          "color": "orange",
+          "opacity": 0.45
+        },
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "九省通衢",
+      "children": [
+        {
+          "name": "tielu",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/wuhantieluo.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "dash",
+                "color": "#000",
+                "dashLength": 16,
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "gaosu",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/gaosu.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "yellow"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "gaosu1",
+          "gaosutitle": "hurong",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/hurong.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "#7700FF"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "gaosu2",
+          "gaosutitle": "huyu",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/huyu.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "#00FF2F"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "gaosu3",
+          "gaosutitle": "jinggao",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/jinggaogao.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "#FFCB00"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "gaosu4",
+          "gaosutitle": "raocheng",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/raocheng.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "blue"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "gaosu5",
+          "gaosutitle": "wusheng",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/wusheng.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "#00FFF5"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "协同观测",
+      "children": [
+        {
+          "name": "省面",
+          "type": "map",
+          "visible": false,
+          "url": "http://10.108.66.169:9080/zs/data/QGIS/sheng",
+          // "url": "http://192.168.8.215:19080/zs/data/QGIS/sheng",
+          "style": {
+            "map-type": "zmap",
+            "scheme": "GEOGRAPHIC"
+          }
+        },
+        {
+          "name": "卫星",
+          "visible": false,
+          "type": "dynActor",
+          // "url": "http://10.108.66.169/data/3dtiles/17/tileset.json",
+          "path": "/ZMapAssets/Models/Sundry/Satellite/Satellite01/BP_Satellite01",
+          "position": [
+            110.87309149054849,
+            30.31250086389121,
+            90000
+          ],
+          "scale": [
+            600,
+            600,
+            600
+          ],
+          "pose": [
+            150,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "X雷达往复",
+          "visible": false,
+          "type": "dynActor",
+          "path": "/ZMapAssets/Models/Sundry/Radar/Radar10/BP_radar10_2",
+          "position": [
+            113.907929,
+            30.310087,
+            5116.113026673778
+          ],
+          "pose": [
+            60,
+            0,
+            0
+          ],
+          "scale": [
+            100000,
+            100000,
+            100000
+          ],
+        },
+        {
+          "name": "X雷达往复2",
+          "visible": false,
+          "type": "dynActor",
+          "path": "/ZMapAssets/Models/Sundry/Radar/Radar10/BP_radar10_2",
+          "position": [
+            114.241542,
+            30.37307,
+            5443.872215892903
+          ],
+          "pose": [
+            120,
+            0,
+            0
+          ],
+          "scale": [
+            100000,
+            100000,
+            100000
+          ],
+        },
+        {
+          "name": "垂直观测",
+          "visible": false,
+          "type": "dynActor",
+          "path": "/ZMapAssets/Models/Sundry/Radar/Radar6/BP_Radar6",
+          "position": [
+            113.96076431095395,
+            30.34602418236754,
+            5118.4490708531075
+          ],
+          "pose": [
+            100,
+            0,
+            0
+          ],
+          // "scale": [100000, 100000, 100000],
+        },
+        // {
+        //   "name": "气象观测站",
+        //   "visible": false,
+        //   "type": "3dtiles",
+        //   "url": "http://10.108.66.169/data/3dtiles/13/tileset.json",
+        //   "scale": [1,1,1],
+        //   "position": [113.96114725641836,30.34612230258382,5118.301108774142],
+        //   "pose": [0,0,0]
+        // },
+        {
+          "name": "20km",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/20km预警线.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "red"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "60km",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/60km预警线.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "yellow"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+        {
+          "name": "120km",
+          "hide": false,
+          "type": "vector",
+          "url": "./data/120km预警线.geojson",
+          "formatter": {
+            "type": "geojson",
+            "coordinateOffset": [
+              0,
+              0,
+              5100
+            ]
+          },
+          "visible": false,
+          "style": {
+            "name": "{District}",
+            "stroke": {
+              "width": "4",
+              "detail": {
+                "type": "normal",
+                "color": "green"
+              },
+              "depthCheck": false
+            },
+          }
+        },
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "孪生大气",
+      "children": [
+        // {
+        //   "name": "体数据",
+        //   "type": "volume",
+        //   "visible": false,
+        //   "volumeOptions": {
+        //     "volumeData": "/ZMap/Materials/Volume/T_Temperature_Volume",
+        //     "volumeColorMap": "",
+        //     "volumeOverlay": "http://10.108.66.169/data/images/sitePointV3_70_190/air1.png",
+        //     "volumeMin": [
+        //       113.66,
+        //       29.9,
+        //       6050
+        //     ],
+        //     "volumeMax": [
+        //       115.12,
+        //       31.36,
+        //       45050
+        //     ],
+        //     "volumeScale": [
+        //       1,
+        //       1,
+        //       1
+        //     ],
+        //     "volumeOffset": [
+        //       0,
+        //       0,
+        //       0
+        //     ]
+        //   }
+        // },
+        // Temperature
+        {
+          "name": "体数据",
+          "type": "volume",
+          "visible": false,
+          "volumeOptions": {
+            "volumeData": "/ZMap/Materials/Volume/T_Temperature_Volume",
+            "volumeColorMap": "http://10.108.66.169/data/images/sitePointV3_70_190/color1.png",
+            "volumeOverlay": "http://localhost:9081/zs/data/qgis/wuhan02/map?range=113.66,29.9,115.12,31.36&size=512,512",
+            "volumeMin": [
+              113.66,
+              29.9,
+              10050
+            ],
+            "volumeMax": [
+              115.12,
+              31.36,
+              40050
+            ],
+            "volumeScale": [
+              1,
+              1,
+              1
+            ],
+            "volumeOffset": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        //Radar
+        {
+          "name": "体数据2",
+          "type": "volume",
+          "visible": false,
+          "volumeOptions": {
+            "volumeData": "/ZMap/Materials/Volume/T_Radar_Volume",
+            "volumeColorMap": "http://10.108.66.169/data/images/sitePointV3_70_190/color2.png",
+            "volumeOverlay": "http://localhost:9081/zs/data/qgis/wuhan02/map?range=113.66,29.9,115.12,31.36&size=512,512",
+            "volumeMin": [
+              113.66,
+              29.9,
+              10050
+            ],
+            "volumeMax": [
+              115.12,
+              31.36,
+              40050
+            ],
+            "volumeScale": [
+              1,
+              1,
+              1
+            ],
+            "volumeOffset": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        //Temperature_Black
+        {
+          "name": "体数据3",
+          "type": "volume",
+          "visible": false,
+          "volumeOptions": {
+            "volumeData": "/ZMap/Materials/Volume/Temperature_Black_Volume",
+            "volumeColorMap": "http://10.108.66.169/data/images/sitePointV3_70_190/color3.png",
+            "volumeOverlay": "http://localhost:9081/zs/data/qgis/wuhan02/map?range=113.66,29.9,115.12,31.36&size=512,512",
+            "volumeMin": [
+              113.66,
+              29.9,
+              10050
+            ],
+            "volumeMax": [
+              115.12,
+              31.36,
+              40050
+            ],
+            "volumeScale": [
+              1,
+              1,
+              1
+            ],
+            "volumeOffset": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "name": "风场",
+          "visible": false,
+          "type": "dynActor",
+          "path": "/ZMap/Niagara/NS_WindField.NS_WindField",
+          "position": [
+            114.375984,
+            30.598208,
+            22276
+          ],
+          "pose": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+  ],
+  "models": [
+    {
+      "type": "folder",
+      "name": "倾斜",
+      "children": [
+        //         {
+        //   "name": "13号线",
+        //   "hide": true,
+        //   "type": "vector",
+        //   "url": "http://10.108.66.169/data/geojson/wuhan_simple.json",
+        //   "formatter": {
+        //     "type": "geojson",
+        //     "option": {
+        //       "type": "polyline",
+        //       "datapath": [
+        //         "data",
+        //         "lines"
+        //       ],
+        //       "coordinates": "xy"
+        //     }
+        //   },
+        //   "visible": true,
+        //   "style": {
+        //     "name": "{name}",
+        //     "stroke": {
+        //       "width": 5,
+        //       "detail": {
+        //         "type": "normal",
+        //         "color": "red"
+        //       }
+        //     },
+        //     "wall": {
+        //       "color": "red",
+        //       "height": 2000,
+        //       "image": "./images/arrow.png",
+        //       "imageRepeatY": 1,
+        //       "outlineColor": "black",
+        //       "outlineWidth": 1
+        //     }
+        //   }
+        // },
+        // {
+        //   "name": "气象观测站",
+        //   "visible": false,
+        //   "type": "3dtiles",
+        //   "url": "http://10.108.66.169/data/3dtiles/11/tileset.json",
+        //   "scale": [1,1,1],
+        //   "position": [114.208611111111,31.1263888888889,0],
+        //   "pose": [0,0,0]
+        // },
+      ]
+    }
+  ],
+  "menus": [
+    {
+      "type": "folder",
+      "name": "菜单信息",
+      "children": []
+    }
+  ],
+  "layers": [
+    {
+      "type": "folder",
+      "name": "业务信息",
+      "children": [
+        {
+          "name": "监测站",
+          "visible": false,
+          "type": "point",
+          // "url": "./base/queryBall?pageSize=-1&pageNum=-1",
+          "enableCluster": false,
+          "enableAnimation": false,
+          "ui": {
+            "menu": true,
+            "bind": [
+              "摄像头"
+            ]
+          },
+          "legend": {
+            "legendType": "image",
+            "value": [
+              {
+                "name": "监测站",
+                "url": "image/plotting/站点@1x.png"
+              }
+            ]
+          },
+          "data": {
+            "data": [
+              {
+                "id": 22,
+                "name": "G1157",
+                "latitude": "31.367420",
+                "longitude": "112.741",
+                "height": "465",
+                "type": "摄像头"
+              },
+              {
+                "name": "G1158",
+                "latitude": "31.367430",
+                "longitude": "112.7413",
+                "height": "465",
+                "type": "摄像头"
+              },
+              {
+                "name": "59278",
+                "latitude": "31.367440",
+                "longitude": "112.7417",
+                "height": "465",
+                "type": "摄像头"
+              },
+              {
+                "name": "59288",
+                "latitude": "31.367450",
+                "longitude": "112.7411",
+                "height": "465",
+                "type": "摄像头"
+              }
+            ],
+            "meta": {
+              "epsg": "4326",
+              "x": "longitude",
+              "y": "latitude",
+              "z": "height"
+            }
+          },
+          "style": {
+            "label": {
+              "text": "{name}",
+              "font": "20px 微软雅黑",
+              "offset": [
+                0,
+                48
+              ],
+              "color": "#000",
+              "backgroundColor": "#fff",
+              "background": true,
+              "visible": true,
+              "scaleDistance": [
+                100,
+                2,
+                1000,
+                1
+              ],
+              "visibleRange": [
+                0,
+                10000
+              ],
+              "depth-distance": 2000
+            },
+            "icon": {
+              "src": "./image/plotting/站点@1x.png",
+              "width": 40,
+              "height": 55,
+              "depth-distance": 2000
+            },
+            "tip": "{name}"
+          }
+        },
+        {
+          "name": "净初级生产力专题图",
+          "type": "map",
+          "visible": false,
+          "url": "http://192.168.8.57:9080/zs/data/DEMO/t01",
+          "style": {
+            // "map-type": "ZMapImage",
+            "map-type": "zmap",
+            "subdomains": "01234567",
+            "scheme": "GEOGRAPHIC"
+          },
+          "rate": {
+            "unit": "year"
+          },
+          "legend": {
+            "colors": {
+              "id": "c009",
+              "name": "最高温度",
+              "unit": "℃",
+              "list": [
+                {
+                  "name": "-",
+                  "minV": 0,
+                  "maxV": 200,
+                  "color": "#B0332C",
+                  "sort": 1,
+                  "opacity": 1
+                },
+                {
+                  "name": "-",
+                  "minV": 200,
+                  "maxV": 400,
+                  "color": "#E36D52",
+                  "sort": 1,
+                  "opacity": 1
+                },
+                {
+                  "name": "-",
+                  "minV": 400,
+                  "maxV": 600,
+                  "color": "#EDBA6E",
+                  "sort": 1,
+                  "opacity": 1
+                },
+                {
+                  "name": "-",
+                  "minV": 600,
+                  "maxV": 800,
+                  "color": "#F2D890",
+                  "sort": 1,
+                  "opacity": 1
+                },
+                {
+                  "name": "-",
+                  "minV": 800,
+                  "maxV": 1000,
+                  "color": "#F9FDC0",
+                  "sort": 1,
+                  "opacity": 1
+                },
+                {
+                  "name": "-",
+                  "minV": 1000,
+                  "maxV": 1200,
+                  "color": "#CCE78E",
+                  "sort": 1,
+                  "opacity": 1
+                },
+                {
+                  "name": "-",
+                  "minV": 1200,
+                  "maxV": 1400,
+                  "color": "#8FC56F",
+                  "sort": 1,
+                  "opacity": 1
+                },
+                {
+                  "name": "-",
+                  "minV": 1400,
+                  "maxV": 1600,
+                  "color": "#4E9D5D",
+                  "sort": 1,
+                  "opacity": 1
+                }
+              ]
+            },
+            "legendType": "colorBar",
+            "spacing": 2,
+            "colorline": {
+              "type": 1,
+              "values": [
+                "极小",
+                "极大"
+              ]
+            }
+          },
+          "useAnimate": {
+            "use": true,
+            "running": false,
+            "loopSize": 10,
+            "interval": 1000,
+            "layerList": [
+              {
+                "name": "切片01",
+                "type": "map",
+                "alias": "2010",
+                "format": "2010数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP01",
+                "style": {
+                  // "map-type": "ZMapImage",
+                  "map-type": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片02",
+                "type": "map",
+                "alias": "2011",
+                "format": "2011数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP02",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片03",
+                "type": "map",
+                "alias": "2012",
+                "format": "2012数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP03",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片04",
+                "type": "map",
+                "alias": "2013",
+                "format": "2013数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP04",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片05",
+                "type": "map",
+                "alias": "2014",
+                "format": "2014数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP05",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片06",
+                "type": "map",
+                "alias": "2015",
+                "format": "2015数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP06",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片07",
+                "type": "map",
+                "alias": "2016",
+                "format": "2016数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP07",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片08",
+                "type": "map",
+                "alias": "2017",
+                "format": "2017数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP08",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片09",
+                "type": "map",
+                "alias": "2018",
+                "format": "2018数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP09",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片10",
+                "type": "map",
+                "alias": "2019",
+                "format": "2019数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP10",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片11",
+                "type": "map",
+                "alias": "2020",
+                "format": "2020数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP11",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              },
+              {
+                "name": "切片12",
+                "type": "map",
+                "alias": "2021",
+                "format": "2021数据",
+                "visible": true,
+                "url": "http://localhost:9999/zs/data/Images/THQP12",
+                "style": {
+                  "map-type": "ZMapImage",
+                  "map-type1": "zmap",
+                  "subdomains": "01234567",
+                  "scheme": "GEOGRAPHIC"
+                }
+              }
+            ]
+          },
+          "iconList": [
+            {
+              "icon": "icon-jiaoyi_biyan",
+              "title": "显示/隐藏",
+              "clickIcon": "icon-zhengyanjing",
+              "canActive": true,
+              "active": true,
+              "key": 0,
+              "show": true
+            },
+            {
+              "icon": "icon-upon",
+              "title": "上移",
+              "clickIcon": "",
+              "key": 1,
+              "show": true,
+              "active": false
+            },
+            {
+              "icon": "icon-shangyi",
+              "title": "下移",
+              "clickIcon": "",
+              "key": 2,
+              "show": true,
+              "active": false
+            },
+            {
+              "icon": "icon-suo",
+              "title": "锁住/解锁",
+              "clickIcon": "icon-suo1",
+              "canActive": true,
+              "key": 3,
+              "show": true,
+              "active": false
+            },
+            {
+              "icon": "&#xe604;",
+              "title": "时间对齐",
+              "clickIcon": "",
+              "key": 4,
+              "show": false,
+              "active": false
+            },
+            {
+              "icon": "&#xe690;",
+              "title": "设置透明度",
+              "clickIcon": "",
+              "key": 7,
+              "show": false,
+              "active": false
+            },
+            {
+              "icon": "&#xe6c6;",
+              "title": "修改参数",
+              "clickIcon": "",
+              "key": 8,
+              "show": false,
+              "active": false
+            },
+            {
+              "icon": "icon-bofang1",
+              "title": "播放/暂停动画",
+              "clickIcon": "icon-bofang",
+              "key": 11,
+              "canActive": true,
+              "show": true,
+              "active": false
+            },
+            {
+              "icon": "icon-chuyidong",
+              "title": "删除图层",
+              "clickIcon": "",
+              "key": 9,
+              "show": true,
+              "active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "特效",
+      "children": [
+        {
+          "type": "dynActor",
+          "name": "特效_大波动圈",
+          "path": "NiagaraSystem'/Game/tx/Actors/AlertCircle/BigCircle.BigCircle'",
+          "visible": false,
+          "position": [
+            114.45169305196173,
+            31.094068476428834,
+            8581.538676053668
+          ],
+          "pose": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "type": "dynActor",
+          "name": "特效_大箭头",
+          "path": "Blueprint'/Game/blueprint/anchor_arrow.anchor_arrow'",
+          "visible": false,
+          "position": [
+            112.7474254,
+            31.34,
+            470
+          ],
+          "pose": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            15,
+            15,
+            15
+          ]
+        },
+        {
+          "type": "dynActor",
+          "name": "特效_小蓝波动圈",
+          "path": "NiagaraSystem'/Game/tx/Actors/AlertCircle/SmallBlueCircle.SmallBlueCircle'",
+          "visible": false,
+          "position": [
+            112.7474254,
+            31.34,
+            550
+          ],
+          "pose": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "type": "dynActor",
+          "name": "特效_感叹号",
+          "path": "Blueprint'/Game/blueprint/exclamatory.exclamatory'",
+          "visible": false,
+          "position": [
+            112.7474254,
+            31.34,
+            550
+          ],
+          "pose": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "type": "dynActor",
+          "name": "特效_火焰",
+          "path": "Blueprint'/Game/blueprint/fire.fire'",
+          "visible": false,
+          "position": [
+            112.7474254,
+            31.34,
+            550
+          ],
+          "pose": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "type": "dynActor",
+          "name": "特效_聚焦点",
+          "path": "NiagaraSystem'/Game/tx/Actors/AlertCircle/FoucePoint.FoucePoint'",
+          "visible": false,
+          "position": [
+            112.7474254,
+            31.34,
+            550
+          ],
+          "pose": [
+            155.00099115001566,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "type": "dynActor",
+          "name": "特效_能量圈",
+          "path": "Blueprint'/Game/tx/lg/BP_Spline_PolyLine.BP_Spline_PolyLine'",
+          "visible": false,
+          "position": [
+            112.7474254,
+            31.34,
+            550
+          ],
+          "pose": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "type": "dynActor",
+          "name": "特效_锚点",
+          "path": "Blueprint'/Game/blueprint/anchor.anchor'",
+          "visible": false,
+          "position": [
+            112.7474254,
+            31.34,
+            520
+          ],
+          "pose": [
+            25,
+            0,
+            0
+          ],
+          "scale": [
+            100,
+            100,
+            100
+          ]
+        }
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "type": "folder",
+      "name": "标注信息",
+      "children": []
+    }
+  ]
+}

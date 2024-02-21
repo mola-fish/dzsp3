@@ -1,0 +1,101 @@
+body {
+  position: relative;
+  color: #333333;
+  font-family: '微软雅黑';
+  --theme-color: #00ccff;
+  --second-theme-color: #1b92b0;
+  --light-theme: rgba(179, 195, 215, 0.9);
+  --main-color: #1C4A86;
+  --box-bg: rgba(255, 255, 255, 0.8);
+  --dot-color: #1178D7;
+  --line-color: rgba(255, 255, 255, 0.8);
+  --shadow-color: rgba(255, 255, 255, 0.8);
+  // 左侧面板（经典）
+  --unit-line-color: #E9E9E9;
+  // 右下面板（经典）
+  --panel-line-color: #CACACA;
+}
+
+// 默认主题
+body[data-theme="theme-blue"]{
+  --theme-color: #1479d7;
+  --light-theme: rgba(179, 195, 215, 0.9);
+  --main-color: #1C4A86;
+  --box-bg: rgba(255, 255, 255, 0.8);
+}
+body[data-theme="theme-darkblue"]{
+  --theme-color: #1c4da3;
+  --light-theme: rgba(28, 77, 163, 0.1);
+  --main-color: rgba(41, 108, 226, 0.35);
+  --box-bg: rgba(255, 255, 255, 0.8);
+  --dot-color: #F0F0F0;
+  --line-color: rgba(255, 255, 255, 0.8);
+  --shadow-color: rgba(255, 255, 255, 0.8);
+  --unit-line-color: #E9E9E9;
+  --panel-line-color: #CACACA;
+}
+body[data-theme="theme-green"]{
+  --theme-color: #54c141;
+  --light-theme: rgba(84, 193, 65, 0.9);
+  --main-color: #1C4A86;
+  --box-bg: rgba(255, 255, 255, 0.8);
+  --unit-line-color: rgba(84, 193, 65, 0.1);
+  --panel-line-color: rgba(58, 141, 205, .3);
+}
+body[data-theme="theme-red"]{
+  --theme-color: #d99b68;
+  --light-theme: rgba(217, 155, 104, 0.9);
+  --main-color: #1C4A86;
+  --box-bg: rgba(255, 255, 255, 0.8);
+  --unit-line-color: rgba(217, 155, 104, 0.1);
+  --panel-line-color: rgba(58, 141, 205, .3);
+}
+body[data-theme="theme-dark"]{
+  --theme-color: rgba(0,0,0,0.8);
+  --light-theme: rgba(0,0,0,0.6);
+  --main-color: #333;
+  --box-bg: rgba(0, 0, 0, 0.6);
+  --line-color: rgba(0,0,0,1);
+  --shadow-color: rgba(0, 0, 0, 0.8);
+  // 左侧面板（经典）
+  --unit-line-color: black;
+  // 右下面板（经典）
+  --panel-line-color: black;
+  color: white;
+}
+
+/// layout override
+body[data-layout="layout-simple"]{
+  .layer-list{
+    left: 0;
+    right: unset;
+
+    .panel-close{
+      left: 100%;
+    }
+    .btn-act{
+      border-radius: 0 4px 4px 0!important;
+      .iconfont{
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.linearGradientBg {
+  background-image: linear-gradient(0deg,
+  rgba(25,60,1,.7) 0%,
+  rgba(13,54,77,.7) 100%);
+  //backdrop-filter: blur(5px);
+}
+
+@boxBg: var(--box-bg);
+@themeColor: var(--theme-color);
+@secondThemeColor: var(--second-theme-color);
+@mainColor: var(--main-color);
+@light-theme: var(--light-theme);
+@dot-color: var(--dot-color);
+@line-color: var(--line-color);
+@shadow-color: var(--shadow-color);
+@unit-line-color: var(--unit-line-color);
+@panel-line-color: var(--panel-line-color);
